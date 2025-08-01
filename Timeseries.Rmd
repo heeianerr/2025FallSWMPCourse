@@ -23,7 +23,7 @@ Author(s): Paul Hanson, [pchanson\@wisc.edu](mailto:pchanson@wisc.edu){.email}
 
 University of Wisconsin-Madison, Center for Limnology
 
-Adapted to R markdown by Veronica Gibson, University of Hawaiʻi at Mānoa, HIMB
+Adapted to R markdown by Veronica Gibson, University of Hawaii at Manoa, HIMB
 
 Data originated from NERRS CDMO: <https://cdmo.baruch.sc.edu/> and data was compiled into csvs for all Reserves using code from:
 
@@ -67,7 +67,8 @@ The following code assumes water quality (WQ) data, but can be edited for nutrie
 # Load required libraries
 library(here)        # Provides an easy way to construct file paths
 
-# The following two parameters are not necessarily known apriori; code above prints the unique stations
+# The following two parameters are not necessarily known apriori; code above prints the unique 
+# stations
 # Select the nth station from the site
 
 #This will be used for plotting the data below
@@ -109,18 +110,21 @@ plot(decompose(myTS))
 
 # Plot the autocorrelation function (ACF) for the trend component of the decomposed time series
 # Interpretation: The ACF plot for the trend shows how strongly the current value is correlated
-# with past values at various time lags. A slow decay of the ACF suggests a long-term dependency in the data.
+# with past values at various time lags. A slow decay of the ACF suggests a long-term  
+# dependency in the data.
 acf(na.omit(myTSdecomposed$trend), ylab='ACF Trend')
 
 # Plot the autocorrelation function for the seasonal component
 # Interpretation: The ACF plot for the seasonal component will often show a periodic pattern,
-# indicating that the data repeats at regular intervals (e.g., annual cycles). Peaks at regular lags
+# indicating that the data repeats at regular intervals (e.g., annual cycles). Peaks at regular
+#lags
 # suggest strong seasonality.
 acf(na.omit(myTSdecomposed$seasonal), ylab='ACF Seasonal')
 
 # Plot the autocorrelation function for the random (residual) component
 # Interpretation: The ACF plot for the random component should ideally show no significant
-# correlation at any lag, as the residuals are expected to be random noise. Any significant correlations
+# correlation at any lag, as the residuals are expected to be random noise. Any significant 
+# correlations
 # might suggest some underlying pattern or structure still remaining in the residuals.
 acf(na.omit(myTSdecomposed$random), ylab='ACF Random')
 
